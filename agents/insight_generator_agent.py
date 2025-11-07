@@ -22,7 +22,7 @@ def compute_statistical_insights(df: pd.DataFrame) -> Dict[str, Any]:
 
     insights = {}
 
-    # 1️⃣ Numeric columns
+    # 1️ Numeric columns
     num_df = df.select_dtypes(include=np.number)
     if not num_df.empty:
         corr = num_df.corr()
@@ -40,11 +40,11 @@ def compute_statistical_insights(df: pd.DataFrame) -> Dict[str, Any]:
     else:
         insights["top_correlations"] = {}
 
-    # 2️⃣ Missing values %
+    # 2️ Missing values %
     missing_pct = (df.isnull().sum() / len(df) * 100).to_dict()
     insights["missing_percentage"] = missing_pct
 
-    # 3️⃣ Basic numeric summary
+    # 3️ Basic numeric summary
     insights["numeric_summary"] = df.describe().to_dict()
 
     logger.info("Statistical insights computed successfully.")
