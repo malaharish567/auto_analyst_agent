@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MultiAgent Analyst System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>MultiAgent Analyst System</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".csv" required>
+            <button type="submit">Upload & Analyze</button>
+        </form>
+
+        {% if report %}
+        <div class="report">
+            <h2>Generated Report</h2>
+            <pre>{{ report }}</pre>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
