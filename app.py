@@ -15,11 +15,11 @@ def index():
     report = None
     if request.method == "POST":
         if "file" not in request.files:
-            return render_template("index.html", report="❌ No file part in request")
+            return render_template("index.html", report=" No file part in request")
 
         file = request.files["file"]
         if file.filename == "":
-            return render_template("index.html", report="❌ No file selected")
+            return render_template("index.html", report=" No file selected")
 
         filepath = os.path.join(UPLOAD_FOLDER, file.filename)
         file.save(filepath)
@@ -35,10 +35,10 @@ def index():
             if not isinstance(report, str):
                 report = str(report)
 
-            report = f"✅ File '{file.filename}' uploaded successfully.\n\nReport:\n\n{report}"
+            report = f" File '{file.filename}' uploaded successfully.\n\nReport:\n\n{report}"
 
         except Exception as e:
-            report = f"⚠️ Error while generating report: {str(e)}"
+            report = f" Error while generating report: {str(e)}"
 
         return render_template("index.html", report=report)
 
